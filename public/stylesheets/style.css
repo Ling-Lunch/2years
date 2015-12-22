@@ -22,7 +22,7 @@ html, body, button, input, select, textarea,
 a {
   text-decoration: none;
   color: #FFF;
-  /*background-color: #43ADF9;*/
+  /*background-color: #004D99;*/
   -webkit-transition: all ease-out 0.3s;
   -moz-transition: all ease-out 0.3s;
   -ms-transition: all ease-out 0.3s;
@@ -31,7 +31,7 @@ a {
 }
 
 a:hover {
-  color: #43ADF9;
+  color: #004D99;
   background-color: transparent;
 }
 
@@ -50,7 +50,7 @@ span.subreddit-link a {
   margin-top: 3px;
   margin-left: 15px;
   float: left;
-  color: #43ADF9;
+  color: #004D99;
   background-color: #FFF;
 }
 
@@ -60,7 +60,7 @@ span.subreddit-link a:hover {
 }
 
 span.chat-topic a {
-  color: #43ADF9;
+  color: #004D99;
   background-color: #FFF;
 }
 
@@ -150,11 +150,11 @@ img.header-logo {
   width: 15rem;
   font-size: 1.2rem;
   text-align: center;
-  color: #43ADF9;
+  color: #004D99;
 }
 
 .usertag-preview {
-  color: #43ADF9;
+  color: #004D99;
 }
 
 .deactivate-overlay {
@@ -185,7 +185,7 @@ img.header-logo {
   text-align: right;
   font-size: 1.2rem;
   box-shadow: 0 0 2px 0 #000;
-  background-color: #43ADF9;
+  background-color: #004D99;
   color: #FFF;
 }
 
@@ -206,13 +206,13 @@ img.header-logo {
   height: 3.2rem;
   width: 60vw;
   font-size: 1.3rem;
-  color: #43ADF9;
+  color: #004D99;
 }
 
 .send-btn {
   height: 3.2rem;
   width: 3.2rem;
-  background-color: #43ADF9;
+  background-color: #004D99;
   color: #FFF;
   -webkit-transition: all ease-out 0.3s;
   -moz-transition: all ease-out 0.3s;
@@ -222,7 +222,7 @@ img.header-logo {
 }
 
 .send-btn:hover {
-  color: #43ADF9;
+  color: #004D99;
   background-color: #FFF;
 }
 
