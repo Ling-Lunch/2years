@@ -1,13 +1,10 @@
-Quibbler
+Ling-Lunch 2 years anniversary
 ========
 
-![Looking for hover text?](https://github.com/Antrikshy/Quibbler/blob/master/public/images/dark-logo.png)
+## Usage
 
-Quibbler is an experimental Node.js web app powered by Socket.IO where people can type messages anonymously and see them flash on the screen for a moment, only to permanently disappear after a few seconds. All messages are randomly inserted into a cloud of messages, in real-time sync between all users. Messages are never saved anywhere.
-
-It's pretty cool.
-
-**[Visit Quibbler](http://quibbler.co)**
+```npm install```
+```npm start```
 
 Libraries
 ---------

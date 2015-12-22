@@ -69,7 +69,7 @@ $(document).ready(function() {
 
 function initClient(usertag) {
     // Socket.IO stuff
-    var socket = io.connect('http://localhost:3000', {
+    var socket = io.connect('', {
         query: 'tag=' + usertag
     });
 

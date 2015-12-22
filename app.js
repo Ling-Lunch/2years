@@ -3,26 +3,12 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 var fs = require('fs');
-var schedule = require('node-schedule');
-var antiSpam = require('socket-anti-spam');
-var watchr = require('watchr');
 var touch = require("touch")
-
 var routes = require('./routes');
-// var topicHandler = require(path.resolve(__dirname, 'lib', 'topic_handler.js'));
 
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-
-topicsLocation = path.resolve(__dirname, 'lib', 'topics.json');
-manualTopicsLocation = path.resolve(__dirname, 'lib', 'manual-topics.json');
-// spamStringsLocation = path.resolve(__dirname, 'lib', 'spam-strings');
-
-currTopic = {
-    "topic": "Loading...",
-    "url": null
-};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,34 +22,6 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes.index);
-
-// var antiSpam = new antiSpam({
-//     spamCheckInterval: 3000,
-//     spamMinusPointsPerInterval: 3,
-//     spamMaxPointsBeforeKick: 9,
-//     spamEnableTempBan: true,
-//     spamKicksBeforeTempBan: 3,
-//     spamTempBanInMinutes: 120,
-//     removeKickCountAfter: 1,
-// });
-
-// Spam strings file management
-// var spamStrings = [];
-// touch.sync(spamStringsLocation);
-// fs.readFile(spamStringsLocation, function(err, data) {
-//     if (err) throw err;
-//     spamStrings = data.toString().split("\n");
-// });
-
-// watchr.watch({
-//     path: spamStringsLocation,
-//     listener: function() {
-//         fs.readFile(spamStringsLocation, function(err, data) {
-//             if (err) throw err;
-//             spamStrings = data.toString().split("\n");
-//         });
-//     }
-// });
 
 var recentMessageTimes = {}; // Recent message timestamps by socket ID
 var lastMessages = {}; // Last message by user
@@ -118,21 +76,6 @@ io.on('connection', function(socket) {
             socket.disconnect();
             return;
         }
-
-        var spamCheckMessage = message.toLowerCase().trim();
-
-        // if (spamStrings.indexOf(spamCheckMessage) > -1) {
-        //     socket.disconnect();
-        //     return;
-        // }
-
-        // for (i = 0; i < spamStrings.length; i++) {
-        //     if (spamStrings[i].length && spamCheckMessage.indexOf(
-        //             spamStrings[i]) > -1) {
-        //         socket.disconnect();
-        //         return;
-        //     }
-        // }
 
         // Soft anti-spam measures
         var recent = recentMessageTimes[socket.id];
@@ -200,26 +143,7 @@ io.on('connection', function(socket) {
     });
 });
 
-// topicHandler.firstTimeSetup();
-
-// topicHandler.topicsScheduler(function() {
-//     broadcastTopic(topicHandler.getNextTopic());
-// });
-
-// var rule = new schedule.RecurrenceRule();
-// rule.minute = [0, 15, 30, 45];
-// var j = schedule.scheduleJob(rule, function() {
-//     broadcastTopic(topicHandler.getNextTopic());
-// });
-
-
 // Some helper functions
-function broadcastTopic(topicObj) {
-    currTopic = topicObj;
-    io.emit('new topic', currTopic);
-    console.log("New topic: " + currTopic.title);
-}
-
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -260,5 +184,4 @@ app.use(function(err, req, res, next) {
     });
 });
 
-server.listen(3000);
 module.exports = server;
