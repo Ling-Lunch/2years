@@ -30,7 +30,7 @@ var connectionsByIP = {}; // Number of connections by IP
 var usertags = {}; // Nicknames by socket.id
 
 numOfUsers = 0;
-var messageColors = ["#FFFFFF", "#044B7F"];
+var messageColors = ["#FFFFFF", "#43ADF9", "1CF7D8", "#F9EA43"];
 io.on('connection', function(socket) {
     var userIp = socket.client.request.headers['x-forwarded-for'];
     console.log(userIp);
@@ -107,9 +107,9 @@ io.on('connection', function(socket) {
             var left = getRandomInt(2, 90);
             var fontSize = (message.length < 25) ?
                 getRandomFloat(1, 2) : getRandomFloat(0.8, 1.3);
-            var randomColorInd = getRandomInt(0, 1);
+            var randomColorInd = message.match(/(语言学午餐|語言學午餐|linglunch|ling-lunch)/i) == null ? getRandomInt(0, 3) : 3;
             var color = [messageColors[randomColorInd],
-                messageColors[(randomColorInd) ? 0 : 1]
+                messageColors[(randomColorInd !== 0) ? 0 : 1]
             ];
             var thisUsertag = usertags[socket.id];
 

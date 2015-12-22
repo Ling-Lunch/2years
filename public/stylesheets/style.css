@@ -11,7 +11,7 @@ body {
   max-width: 100%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: #FFF;
-  background-color: #2CA4EC;
+  background-color: #A30000;
 }
 
 html, body, button, input, select, textarea,
@@ -22,7 +22,7 @@ html, body, button, input, select, textarea,
 a {
   text-decoration: none;
   color: #FFF;
-  background-color: #044B7F;
+  /*background-color: #43ADF9;*/
   -webkit-transition: all ease-out 0.3s;
   -moz-transition: all ease-out 0.3s;
   -ms-transition: all ease-out 0.3s;
@@ -31,7 +31,7 @@ a {
 }
 
 a:hover {
-  color: #044B7F;
+  color: #43ADF9;
   background-color: transparent;
 }
 
@@ -50,7 +50,7 @@ span.subreddit-link a {
   margin-top: 3px;
   margin-left: 15px;
   float: left;
-  color: #044B7F;
+  color: #43ADF9;
   background-color: #FFF;
 }
 
@@ -60,7 +60,7 @@ span.subreddit-link a:hover {
 }
 
 span.chat-topic a {
-  color: #044B7F;
+  color: #43ADF9;
   background-color: #FFF;
 }
 
@@ -75,6 +75,10 @@ span.chat-topic a:hover {
   width: 50px;
   font-size: 1.3rem;
   color: #fff;
+}
+
+.pure-form input {
+  /*max-width: 80%;*/
 }
 
 .pure-form input[type=text],
@@ -146,11 +150,11 @@ img.header-logo {
   width: 15rem;
   font-size: 1.2rem;
   text-align: center;
-  color: #044B7F;
+  color: #43ADF9;
 }
 
 .usertag-preview {
-  color: #044B7F;
+  color: #43ADF9;
 }
 
 .deactivate-overlay {
@@ -181,7 +185,7 @@ img.header-logo {
   text-align: right;
   font-size: 1.2rem;
   box-shadow: 0 0 2px 0 #000;
-  background-color: #044B7F;
+  background-color: #43ADF9;
   color: #FFF;
 }
 
@@ -202,13 +206,13 @@ img.header-logo {
   height: 3.2rem;
   width: 60vw;
   font-size: 1.3rem;
-  color: #044B7F;
+  color: #43ADF9;
 }
 
 .send-btn {
   height: 3.2rem;
   width: 3.2rem;
-  background-color: #044B7F;
+  background-color: #43ADF9;
   color: #FFF;
   -webkit-transition: all ease-out 0.3s;
   -moz-transition: all ease-out 0.3s;
@@ -218,7 +222,7 @@ img.header-logo {
 }
 
 .send-btn:hover {
-  color: #044B7F;
+  color: #43ADF9;
   background-color: #FFF;
 }
 
