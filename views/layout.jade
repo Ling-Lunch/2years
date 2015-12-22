@@ -1,9 +1,9 @@
 doctype html
 html
   head
-    title Quibbler.co // live comments visualized
+    title 祝福墙
 
-    link(href="http://fonts.googleapis.com/css?family=Noto+Sans", rel="stylesheet", type="text/css")
+    link(href="/stylesheets/font.css", rel="stylesheet", type="text/css")
     
     link(rel="stylesheet", href="/stylesheets/normalize.css")
     link(rel="stylesheet", href="/stylesheets/pure-min.css")
@@ -14,7 +14,7 @@ html
 
     link(rel="stylesheet", href="/stylesheets/style.css")
 
-    script(src="https://cdn.socket.io/socket.io-1.3.4.js")
+    script(src="/javascripts/socket.js")
     script(src="/javascripts/jquery-2.1.3.min.js")
     script(src="/javascripts/jquery.titlealert.min.js")
     script(src="/javascripts/client.js")
@@ -29,6 +29,5 @@ html
     meta(property="og:image", content="http://quibbler.co/images/dark-logo.png")
     meta(property="og:description", content="Beautifully visualized, real-time, anonymous group chat where messages disappear forever")
 
-    include analytics
   body
     block content

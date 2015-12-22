@@ -55,7 +55,7 @@ $(document).ready(function() {
 
     notificationElement = document.createElement('audio');
     notificationElement.setAttribute('src', '/assets/notification.wav');
-    notificationElement.muted = false;
+    notificationElement.muted = true;
 
     $("#soundVolume").click(function() {
         notificationElement.muted = !notificationElement.muted;
@@ -69,7 +69,7 @@ $(document).ready(function() {
 
 function initClient(usertag) {
     // Socket.IO stuff
-    var socket = io.connect('', {
+    var socket = io.connect('http://localhost:3000', {
         query: 'tag=' + usertag
     });
 
