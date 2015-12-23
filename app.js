@@ -109,7 +109,7 @@ io.on('connection', function(socket) {
                 getRandomFloat(1, 2) : getRandomFloat(0.8, 1.3);
             var randomColorInd = message.match(/(语言学午餐|語言學午餐|linglunch|ling-lunch)/i) == null ? getRandomInt(0, 3) : 3;
             var color = [messageColors[randomColorInd],
-                messageColors[(randomColorInd !== 0) ? 0 : 1]
+                messageColors[randomColorInd]
             ];
             var thisUsertag = usertags[socket.id];
 
