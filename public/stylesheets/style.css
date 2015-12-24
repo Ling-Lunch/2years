@@ -50,8 +50,7 @@ span.subreddit-link a {
   margin-top: 3px;
   margin-left: 15px;
   float: left;
-  color: #004D99;
-  background-color: #FFF;
+  color: #FFF;
 }
 
 span.subreddit-link a:hover {
