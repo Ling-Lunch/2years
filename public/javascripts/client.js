@@ -117,14 +117,14 @@ function initClient(usertag) {
                 msgObj.usertag + "]");
 
         $(".message-bundle#" + randomId).addClass('animated bounceIn');
-        // $(".message-bundle#" + randomId).on(
-        //     'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-        //     function() {
-        //         $(this).removeClass('animated bounceIn').delay(3000)
-        //             .fadeOut(600000, function() {
-        //                 $(this).remove();
-        //             });
-        //     });
+        $(".message-bundle#" + randomId).on(
+            'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+            function() {
+                $(this).removeClass('animated bounceIn').delay(3000)
+                    .fadeOut(600000, function() {
+                        $(this).remove();
+                    });
+            });
 
         // console.log("Message sent: " + msgObj.msg);
         
