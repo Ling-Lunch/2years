@@ -5,10 +5,18 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var touch = require("touch")
 var routes = require('./routes');
-
+var redis = require('redis');
+var uuid = require('uuid');
+var _ = require('lodash');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+
+// connect db
+var db = redis.createClient();
+db.on('connect', function() {
+    console.log('db connected');
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -69,6 +77,16 @@ io.on('connection', function(socket) {
 
     numOfUsers++;
     io.emit('user count', numOfUsers);
+    // Get old messages
+    db.keys('*', function(err, keys){
+        if (err) console.error(err);
+        _.forEach(keys, function(unit_key){
+            db.get(unit_key, function(errs, rep){
+                if errs console.error(errs);
+                io.emit('new message', rep);
+            });
+        });
+    });
     console.log("User connected, total: " + numOfUsers);
 
     socket.on("new message", function(message) {
@@ -113,14 +131,20 @@ io.on('connection', function(socket) {
             ];
             var thisUsertag = usertags[socket.id];
 
-            io.emit('new message', {
+            // save to db
+            var unitMessage = {
                 "msg": message,
                 "cssTop": top,
                 "cssLeft": left,
                 "cssFontSize": fontSize,
                 "cssColor": color,
                 "usertag": thisUsertag
-            });
+            };
+            thisId = uuid.v4();
+            db.set(this_id, {"usertag": unitMessage})
+            db.expire(this_id, 7200);
+
+            io.emit('new message', unitMessage);
             // console.log("New message: " + message);
         }
 
