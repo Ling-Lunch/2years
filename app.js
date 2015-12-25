@@ -80,10 +80,12 @@ io.on('connection', function(socket) {
     // Get old messages
     db.keys('*', function(err, keys){
         if (err) console.error(err);
+        console.log(keys);
         _.forEach(keys, function(unit_key){
             db.get(unit_key, function(errs, rep){
-                if errs console.error(errs);
-                io.emit('new message', rep);
+                if (errs) console.error(errs);
+                console.log(rep);
+                io.emit('new message', JSON.parse(rep));
             });
         });
     });
@@ -141,8 +143,8 @@ io.on('connection', function(socket) {
                 "usertag": thisUsertag
             };
             thisId = uuid.v4();
-            db.set(this_id, {"usertag": unitMessage})
-            db.expire(this_id, 7200);
+            db.set(thisId, JSON.stringify(unitMessage));
+            db.expire(thisId, 7200);
 
             io.emit('new message', unitMessage);
             // console.log("New message: " + message);
