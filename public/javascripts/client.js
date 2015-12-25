@@ -4,19 +4,26 @@ $(document).ready(function() {
     $(".main-chat-form").hide();
     $(".github-box").hide();
 
-    $(".usertag-box").on("keydown", function(e) {
-        if (e.keyCode == 13) {
-            $(".deactivate-overlay").trigger("click");
-        }
-    });
+    // $(".usertag-box").on("keydown", function(e) {
+    //     usertag = $(this).val().trim().replace(/\s/g, '');
+    //     $(this).val(usertag);
+    //     if (e.keyCode == 13) {
+    //         if ($(this).val().length > 10) {
+    //             $(this).val(usertag);
+    //         }
+    //         $(".deactivate-overlay").trigger("click");
+    //     }
+    // });
 
-    $(".usertag-box").on("input", function() {
+    $(".usertag-box").on("keyup", function(e) {
+        usertag = $(this).val().trim().replace(/\s/g, '');
         if ($(this).val().length > 10) {
             $(this).val(usertag);
             return;
         }
-
-        usertag = $(this).val().trim().replace(/\s/g, '');
+        if (e.keyCode == 13){
+            $('.deactivate-overlay').trigger('click');
+        }
         $(this).val(usertag);
 
         usertag.length == 0 ? $(".usertag-preview").css("color",

@@ -38,7 +38,7 @@ var connectionsByIP = {}; // Number of connections by IP
 var usertags = {}; // Nicknames by socket.id
 
 numOfUsers = 0;
-var messageColors = ["#FFFFFF", "#43ADF9", "1CF7D8", "#F9EA43"];
+var messageColors = ["#333333", "#003399","#009900", "#FFD633"];
 io.on('connection', function(socket) {
     var userIp = socket.client.request.headers['x-forwarded-for'];
     console.log(userIp);
